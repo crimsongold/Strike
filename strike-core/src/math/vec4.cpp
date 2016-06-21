@@ -3,13 +3,6 @@
 namespace strike {
 	namespace math
 	{
-		Vec4::Vec4()
-		{
-			m_X = 0.0f;
-			m_Y = 0.0f;
-			m_Z = 0.0f;
-			m_W = 0.0f;
-		}
 
 		Vec4::Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W)
 		{

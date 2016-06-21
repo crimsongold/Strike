@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	Vec2 vector(1.0f, 2.0f);
+	/*Vec2 vector(1.0f, 2.0f);
 	vector.add(Vec2(5.0f, 2.0f));
-	std::cout << vector << std::endl;
+	std::cout << vector << std::endl;*/
 
 	while (!window.closed())
 	{

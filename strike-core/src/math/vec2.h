@@ -17,10 +17,10 @@ namespace strike { namespace math
 		Vec2& multiply(const Vec2& a_Other);
 		Vec2& divide(const Vec2& a_Other);
 
-		friend Vec2& operator+(Vec2 a_Left, const Vec2& a_Right);
-		friend Vec2& operator-(Vec2 a_Left, const Vec2& a_Right);
-		friend Vec2& operator*(Vec2 a_Left, const Vec2& a_Right);
-		friend Vec2& operator/(Vec2 a_Left, const Vec2& a_Right);
+		friend Vec2 operator+(Vec2 a_Left, const Vec2& a_Right);
+		friend Vec2 operator-(Vec2 a_Left, const Vec2& a_Right);
+		friend Vec2 operator*(Vec2 a_Left, const Vec2& a_Right);
+		friend Vec2 operator/(Vec2 a_Left, const Vec2& a_Right);
 
 		bool operator==(const Vec2& a_Other);
 		bool operator!=(const Vec2& a_Other);
