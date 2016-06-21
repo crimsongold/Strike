@@ -1,7 +1,7 @@
 #include "window.h"
 
-namespace strike { namespace graphics {
-
+namespace strike { namespace graphics
+{
 	void window_resize(GLFWwindow* a_Window, int a_Width, int a_Height);
 	void key_callback(GLFWwindow* a_Window, int a_Key, int a_Scancode, int a_Action, int a_Mods);
 	void button_callback(GLFWwindow* a_Window, int a_Button, int a_Action, int a_Mods);

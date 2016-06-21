@@ -1,10 +1,11 @@
-#include <iostream>
 #include "src/graphics/window.h"
+#include "src/math/vec2.h"
 
 int main(int argc, char **argv)
 {
 	using namespace strike;
 	using namespace graphics;
+	using namespace math;
 
 	Window window("SparkLight", 800, 600);
 
@@ -14,13 +15,14 @@ int main(int argc, char **argv)
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
+	Vec2 vector(1.0f, 2.0f);
+	vector.add(Vec2(5.0f, 2.0f));
+	std::cout << vector << std::endl;
+
 	while (!window.closed())
 	{
 		window.clear();
 
-		double x, y;
-		window.getMousePosition(x, y);
-		std::cout << x << ", " << y << std::endl;
 		/*glBegin(GL_QUADS);
 		glVertex2f(-0.5f, -0.5f);
 		glVertex2f(-0.5f, 0.5f);

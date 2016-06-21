@@ -4,10 +4,11 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-namespace strike { namespace graphics {
+namespace strike { namespace graphics 
+{
 	
-#define MAX_KEYS 1024
-#define MAX_BUTTONS 32
+	#define MAX_KEYS 1024
+	#define MAX_BUTTONS 32
 	
 	class Window
 	{
@@ -30,9 +31,9 @@ namespace strike { namespace graphics {
 		inline int getWidth() const { return m_Width; }
 		inline int getHeight() const { return m_Height; }
 
-		bool isKeyPressed(unsigned int a_KeyCode);
-		bool isButtonPressed(unsigned int a_ButtonCode);
-		void getMousePosition(double& a_X, double& a_y);
+		bool isKeyPressed(unsigned int a_KeyCode) const;
+		bool isButtonPressed(unsigned int a_ButtonCode) const;
+		void getMousePosition(double& a_X, double& a_y) const;
 
 	private:
 		bool init();

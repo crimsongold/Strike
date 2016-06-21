@@ -18,3 +18,4 @@ ipch/
 Strike.VC.VC.opendb
 *.db
 bin/Debug/strike-core.exe
+*.exe
