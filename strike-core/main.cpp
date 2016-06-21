@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 	using namespace math;
 
 	Window window("SparkLight", 800, 600);
+	
 
 	glClearColor(0.2f, 0.7f, 0.3f, 1.0f);
 

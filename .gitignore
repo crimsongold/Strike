@@ -19,3 +19,4 @@ Strike.VC.VC.opendb
 *.db
 bin/Debug/strike-core.exe
 *.exe
+bin/Debug/strike-core.exe
