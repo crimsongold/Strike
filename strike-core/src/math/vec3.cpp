@@ -49,22 +49,22 @@ namespace strike {
 			return *this;
 		}
 
-		Vec3& operator+(Vec3 a_Left, const Vec3& a_Right)
+		Vec3 operator+(Vec3 a_Left, const Vec3& a_Right)
 		{
 			return a_Left.add(a_Right);
 		}
 
-		Vec3& operator-(Vec3 a_Left, const Vec3& a_Right)
+		Vec3 operator-(Vec3 a_Left, const Vec3& a_Right)
 		{
 			return a_Left.subtract(a_Right);
 		}
 
-		Vec3& operator*(Vec3 a_Left, const Vec3& a_Right)
+		Vec3 operator*(Vec3 a_Left, const Vec3& a_Right)
 		{
 			return a_Left.multiply(a_Right);
 		}
 
-		Vec3& operator/(Vec3 a_Left, const Vec3& a_Right)
+		Vec3 operator/(Vec3 a_Left, const Vec3& a_Right)
 		{
 			return a_Left.divide(a_Right);
 		}
