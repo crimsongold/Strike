@@ -10,7 +10,11 @@ namespace strike { namespace math
 
 	struct Mat4
 	{
-		float elements[4 * 4];
+		union 
+		{
+			float m_Elements[4 * 4];
+			Vec4 m_Columns[4];
+		};
 
 		Mat4();
 		Mat4(float diagonal);

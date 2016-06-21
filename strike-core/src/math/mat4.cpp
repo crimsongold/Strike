@@ -8,7 +8,7 @@ namespace strike { namespace math
 	{
 		for (int i=0; i < 4*4; i++)
 		{
-			elements[i] = 0.0f;
+			m_Elements[i] = 0.0f;
 		}
 	}
 
@@ -16,13 +16,13 @@ namespace strike { namespace math
 	{
 		for (int i = 0; i < 4 * 4; i++)
 		{
-			elements[i] = 0.0f;
+			m_Elements[i] = 0.0f;
 		}
 
-		elements[0 + 0 * 4] = a_Diagonal;
-		elements[1 + 1 * 4] = a_Diagonal;
-		elements[2 + 2 * 4] = a_Diagonal;
-		elements[3 + 3 * 4] = a_Diagonal;
+		m_Elements[0 + 0 * 4] = a_Diagonal;
+		m_Elements[1 + 1 * 4] = a_Diagonal;
+		m_Elements[2 + 2 * 4] = a_Diagonal;
+		m_Elements[3 + 3 * 4] = a_Diagonal;
 
 	}
 
@@ -43,9 +43,9 @@ namespace strike { namespace math
 				float sum = 0.0f;
 				for (int element = 0; element < 4; element++)
 				{
-					sum += elements[x + element * 4];
+					sum += m_Elements[x + element * 4];
 				}
-				elements[x + y * 4] = sum;
+				m_Elements[x + y * 4] = sum;
 			}
 		}
 
@@ -67,13 +67,13 @@ namespace strike { namespace math
 	{
 		Mat4 result(1.0f);
 
-		result.elements[0 + 0 * 4] = 2.0f / (a_Right - a_Left);
-		result.elements[1 + 1 * 4] = 2.0f / (a_Top - a_Bottom);
-		result.elements[2 + 2 * 4] = 2.0f / (a_Near - a_Far);
+		result.m_Elements[0 + 0 * 4] = 2.0f / (a_Right - a_Left);
+		result.m_Elements[1 + 1 * 4] = 2.0f / (a_Top - a_Bottom);
+		result.m_Elements[2 + 2 * 4] = 2.0f / (a_Near - a_Far);
 
-		result.elements[0 + 3 * 4] = (a_Left + a_Right) / (a_Left - a_Right);
-		result.elements[1 + 3 * 4] = (a_Bottom + a_Top) / (a_Bottom - a_Top);
-		result.elements[2 + 3 * 4] = (a_Far + a_Near) / (a_Far - a_Near);
+		result.m_Elements[0 + 3 * 4] = (a_Left + a_Right) / (a_Left - a_Right);
+		result.m_Elements[1 + 3 * 4] = (a_Bottom + a_Top) / (a_Bottom - a_Top);
+		result.m_Elements[2 + 3 * 4] = (a_Far + a_Near) / (a_Far - a_Near);
 
 		return result;
 	}
@@ -87,11 +87,11 @@ namespace strike { namespace math
 		float b = (a_Near + a_Far) / (a_Near - a_Far);
 		float c = (2.0f * a_Near * a_Far) / (a_Near - a_Far);
 
-		result.elements[0 + 0 * 4] = val / a_AspectRatio;
-		result.elements[1 + 1 * 4] = val;
-		result.elements[2 + 2 * 4] = (a_Near + a_Far) / (a_Near - a_Far);
-		result.elements[2 + 3 * 4] = (2.0f * a_Near * a_Far) / (a_Near - a_Far);
-		result.elements[3 + 2 * 4] = -1.0f;
+		result.m_Elements[0 + 0 * 4] = val / a_AspectRatio;
+		result.m_Elements[1 + 1 * 4] = val;
+		result.m_Elements[2 + 2 * 4] = (a_Near + a_Far) / (a_Near - a_Far);
+		result.m_Elements[2 + 3 * 4] = (2.0f * a_Near * a_Far) / (a_Near - a_Far);
+		result.m_Elements[3 + 2 * 4] = -1.0f;
 
 		return result;
 	}
@@ -100,9 +100,9 @@ namespace strike { namespace math
 	{
 		Mat4 result(1.0f);
 
-		result.elements[0 + 3 * 4] = a_Translation.m_X;
-		result.elements[1 + 3 * 4] = a_Translation.m_Y;
-		result.elements[2 + 3 * 4] = a_Translation.m_Z;
+		result.m_Elements[0 + 3 * 4] = a_Translation.m_X;
+		result.m_Elements[1 + 3 * 4] = a_Translation.m_Y;
+		result.m_Elements[2 + 3 * 4] = a_Translation.m_Z;
 
 		return result;
 	}
@@ -118,17 +118,17 @@ namespace strike { namespace math
 		float y = a_Axis.m_Y;
 		float z = a_Axis.m_Z;
 
-		result.elements[0 + 0 * 4] = x * (1 - cosine) + cosine;
-		result.elements[1 + 0 * 4] = x * y * (1 - cosine) + z * sine;
-		result.elements[2 + 0 * 4] = x* z * (1 - cosine) - y * sine;
+		result.m_Elements[0 + 0 * 4] = x * (1 - cosine) + cosine;
+		result.m_Elements[1 + 0 * 4] = x * y * (1 - cosine) + z * sine;
+		result.m_Elements[2 + 0 * 4] = x* z * (1 - cosine) - y * sine;
 
-		result.elements[0 + 1 * 4] = x * y * (1 - cosine) - z * sine;
-		result.elements[1 + 1 * 4] = y * (1 - cosine) + cosine;
-		result.elements[2 + 1 * 4] = y * z * (1 - cosine) + x * sine;
+		result.m_Elements[0 + 1 * 4] = x * y * (1 - cosine) - z * sine;
+		result.m_Elements[1 + 1 * 4] = y * (1 - cosine) + cosine;
+		result.m_Elements[2 + 1 * 4] = y * z * (1 - cosine) + x * sine;
 
-		result.elements[0 + 2 * 4] = x * z * (1 - cosine) + y * sine;
-		result.elements[1 + 2 * 4] = y * z * (1 - cosine) - x * sine;
-		result.elements[2 + 2 * 4] = z * (1 - cosine) + cosine;
+		result.m_Elements[0 + 2 * 4] = x * z * (1 - cosine) + y * sine;
+		result.m_Elements[1 + 2 * 4] = y * z * (1 - cosine) - x * sine;
+		result.m_Elements[2 + 2 * 4] = z * (1 - cosine) + cosine;
 
 		return result;
 	}
@@ -137,9 +137,9 @@ namespace strike { namespace math
 	{
 		Mat4 result(1.0f);
 
-		result.elements[0 + 0 * 4] = a_Scale.m_X;
-		result.elements[1 + 1 * 4] = a_Scale.m_Y;
-		result.elements[2 + 2 * 4] = a_Scale.m_Z;
+		result.m_Elements[0 + 0 * 4] = a_Scale.m_X;
+		result.m_Elements[1 + 1 * 4] = a_Scale.m_Y;
+		result.m_Elements[2 + 2 * 4] = a_Scale.m_Z;
 
 		return result;
 	}

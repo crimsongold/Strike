@@ -9,8 +9,7 @@ namespace strike {
 		{
 			float m_X, m_Y, m_Z, m_W;
 
-			Vec4();
-
+			Vec4() = default;
 			Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W);
 
 			Vec4& add(const Vec4& a_Other);
