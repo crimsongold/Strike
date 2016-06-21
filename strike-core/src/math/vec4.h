@@ -18,10 +18,10 @@ namespace strike {
 			Vec4& multiply(const Vec4& a_Other);
 			Vec4& divide(const Vec4& a_Other);
 
-			friend Vec4& operator+(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4& operator-(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4& operator*(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4& operator/(Vec4 a_Left, const Vec4& a_Right);
+			friend Vec4 operator+(Vec4 a_Left, const Vec4& a_Right);
+			friend Vec4 operator-(Vec4 a_Left, const Vec4& a_Right);
+			friend Vec4 operator*(Vec4 a_Left, const Vec4& a_Right);
+			friend Vec4 operator/(Vec4 a_Left, const Vec4& a_Right);
 
 			bool operator==(const Vec4& a_Other);
 			bool operator!=(const Vec4& a_Other);
