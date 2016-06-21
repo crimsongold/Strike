@@ -71,7 +71,7 @@ namespace strike {
 
 		bool Vec3::operator==(const Vec3& a_Other)
 		{
-			return m_X == a_Other.m_X && m_Y == a_Other.m_Y;
+			return m_X == a_Other.m_X && m_Y == a_Other.m_Y && m_Z == a_Other.m_Z;
 		}
 
 		bool Vec3::operator!=(const Vec3& a_Other)

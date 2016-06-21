@@ -1,5 +1,5 @@
 #include "src/graphics/window.h"
-#include "src/math/vec2.h"
+#include "src/math/math.h"
 
 int main(int argc, char **argv)
 {
