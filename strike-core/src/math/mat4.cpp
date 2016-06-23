@@ -100,9 +100,9 @@ namespace strike { namespace math
 	{
 		Mat4 result(1.0f);
 
-		result.m_Elements[0 + 3 * 4] = a_Translation.m_X;
-		result.m_Elements[1 + 3 * 4] = a_Translation.m_Y;
-		result.m_Elements[2 + 3 * 4] = a_Translation.m_Z;
+		result.m_Elements[0 + 3 * 4] = a_Translation.x;
+		result.m_Elements[1 + 3 * 4] = a_Translation.y;
+		result.m_Elements[2 + 3 * 4] = a_Translation.z;
 
 		return result;
 	}
@@ -114,9 +114,9 @@ namespace strike { namespace math
 		float angleInRadians = toRadians(a_Angle);
 		float cosine = cos(angleInRadians);
 		float sine = sin(angleInRadians);
-		float x = a_Axis.m_X;
-		float y = a_Axis.m_Y;
-		float z = a_Axis.m_Z;
+		float x = a_Axis.x;
+		float y = a_Axis.y;
+		float z = a_Axis.z;
 
 		result.m_Elements[0 + 0 * 4] = x * (1 - cosine) + cosine;
 		result.m_Elements[1 + 0 * 4] = x * y * (1 - cosine) + z * sine;
@@ -137,9 +137,9 @@ namespace strike { namespace math
 	{
 		Mat4 result(1.0f);
 
-		result.m_Elements[0 + 0 * 4] = a_Scale.m_X;
-		result.m_Elements[1 + 1 * 4] = a_Scale.m_Y;
-		result.m_Elements[2 + 2 * 4] = a_Scale.m_Z;
+		result.m_Elements[0 + 0 * 4] = a_Scale.x;
+		result.m_Elements[1 + 1 * 4] = a_Scale.y;
+		result.m_Elements[2 + 2 * 4] = a_Scale.z;
 
 		return result;
 	}

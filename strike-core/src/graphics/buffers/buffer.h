@@ -12,6 +12,7 @@ namespace strike { namespace graphics
 		GLuint m_ComponentCount;
 	public:
 		Buffer(GLfloat* a_Data, GLsizei a_Count, GLuint a_ComponentCount);
+		~Buffer();
 
 		void bind() const;
 		void unbind() const;

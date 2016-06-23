@@ -5,47 +5,47 @@ namespace strike {
 	{
 		Vec3::Vec3()
 		{
-			m_X = 0.0f;
-			m_Y = 0.0f;
-			m_Z = 0.0f;
+			x = 0.0f;
+			y = 0.0f;
+			z = 0.0f;
 		}
 
 		Vec3::Vec3(const float& a_X, const float& a_Y, const float& a_Z)
 		{
-			m_X = a_X;
-			m_Y = a_Y;
-			m_Z = a_Z;
+			x = a_X;
+			y = a_Y;
+			z = a_Z;
 		}
 
 		Vec3& Vec3::add(const Vec3& a_Other)
 		{
-			m_X += a_Other.m_X;
-			m_Y += a_Other.m_Y;
-			m_Z += a_Other.m_Z;
+			x += a_Other.x;
+			y += a_Other.y;
+			z += a_Other.z;
 			return *this;
 		}
 
 		Vec3& Vec3::subtract(const Vec3& a_Other)
 		{
-			m_X -= a_Other.m_X;
-			m_Y -= a_Other.m_Y;
-			m_Z -= a_Other.m_Z;
+			x -= a_Other.x;
+			y -= a_Other.y;
+			z -= a_Other.z;
 			return *this;
 		}
 
 		Vec3& Vec3::multiply(const Vec3& a_Other)
 		{
-			m_X *= a_Other.m_X;
-			m_Y *= a_Other.m_Y;
-			m_Z *= a_Other.m_Z;
+			x *= a_Other.x;
+			y *= a_Other.y;
+			z *= a_Other.z;
 			return *this;
 		}
 
 		Vec3& Vec3::divide(const Vec3& a_Other)
 		{
-			m_X /= a_Other.m_X;
-			m_Y /= a_Other.m_Y;
-			m_Z /= a_Other.m_Z;
+			x /= a_Other.x;
+			y /= a_Other.y;
+			z /= a_Other.z;
 			return *this;
 		}
 
@@ -71,7 +71,7 @@ namespace strike {
 
 		bool Vec3::operator==(const Vec3& a_Other)
 		{
-			return m_X == a_Other.m_X && m_Y == a_Other.m_Y && m_Z == a_Other.m_Z;
+			return x == a_Other.x && y == a_Other.y && z == a_Other.z;
 		}
 
 		bool Vec3::operator!=(const Vec3& a_Other)
@@ -101,8 +101,8 @@ namespace strike {
 
 		std::ostream& operator<<(std::ostream& a_Stream, const Vec3& a_Vector)
 		{
-			return a_Stream << "Vec3 {" << a_Vector.m_X << ", " << a_Vector.m_Y << ", " << 
-				a_Vector.m_Z << "}";
+			return a_Stream << "Vec3 {" << a_Vector.x << ", " << a_Vector.y << ", " << 
+				a_Vector.z << "}";
 		}
 	}
 }

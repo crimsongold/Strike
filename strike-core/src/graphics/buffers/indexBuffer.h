@@ -10,7 +10,8 @@ namespace strike { namespace graphics
 		GLuint m_BufferID;
 		GLuint m_Count;
 	public:
-		IndexBuffer(GLushort* a_Data, GLsizei a_Count);
+		IndexBuffer(GLuint* a_Data, GLsizei a_Count);
+		~IndexBuffer();
 
 		void bind() const;
 		void unbind() const;

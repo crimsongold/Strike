@@ -7,7 +7,7 @@ namespace strike {
 	{
 		struct Vec3
 		{
-			float m_X, m_Y, m_Z;
+			float x, y, z;
 
 			Vec3();
 

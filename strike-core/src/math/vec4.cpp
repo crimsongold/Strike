@@ -6,45 +6,45 @@ namespace strike {
 
 		Vec4::Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W)
 		{
-			m_X = a_X;
-			m_Y = a_Y;
-			m_Z = a_Z;
-			m_W = a_W;
+			x = a_X;
+			y = a_Y;
+			z = a_Z;
+			w = a_W;
 		}
 
 		Vec4& Vec4::add(const Vec4& a_Other)
 		{
-			m_X += a_Other.m_X;
-			m_Y += a_Other.m_Y;
-			m_Z += a_Other.m_Z;
-			m_W += a_Other.m_W;
+			x += a_Other.x;
+			y += a_Other.y;
+			z += a_Other.z;
+			w += a_Other.w;
 			return *this;
 		}
 
 		Vec4& Vec4::subtract(const Vec4& a_Other)
 		{
-			m_X -= a_Other.m_X;
-			m_Y -= a_Other.m_Y;
-			m_Z -= a_Other.m_Z;
-			m_W -= a_Other.m_W;
+			x -= a_Other.x;
+			y -= a_Other.y;
+			z -= a_Other.z;
+			w -= a_Other.w;
 			return *this;
 		}
 
 		Vec4& Vec4::multiply(const Vec4& a_Other)
 		{
-			m_X *= a_Other.m_X;
-			m_Y *= a_Other.m_Y;
-			m_Z *= a_Other.m_Z;
-			m_W *= a_Other.m_W;
+			x *= a_Other.x;
+			y *= a_Other.y;
+			z *= a_Other.z;
+			w *= a_Other.w;
 			return *this;
 		}
 
 		Vec4& Vec4::divide(const Vec4& a_Other)
 		{
-			m_X /= a_Other.m_X;
-			m_Y /= a_Other.m_Y;
-			m_Z /= a_Other.m_Z;
-			m_W /= a_Other.m_W;
+			x /= a_Other.x;
+			y /= a_Other.y;
+			z /= a_Other.z;
+			w /= a_Other.w;
 			return *this;
 		}
 
@@ -70,7 +70,7 @@ namespace strike {
 
 		bool Vec4::operator==(const Vec4& a_Other)
 		{
-			return m_X == a_Other.m_X && m_Y == a_Other.m_Y && m_Z == a_Other.m_Z && m_W == a_Other.m_W;
+			return x == a_Other.x && y == a_Other.y && z == a_Other.z && w == a_Other.w;
 		}
 
 		bool Vec4::operator!=(const Vec4& a_Other)
@@ -100,8 +100,8 @@ namespace strike {
 
 		std::ostream& operator<<(std::ostream& a_Stream, const Vec4& a_Vector)
 		{
-			return a_Stream << "Vec4 {" << a_Vector.m_X << ", " << a_Vector.m_Y << ", " <<
-				a_Vector.m_Z << ", " << a_Vector.m_W <<"}";
+			return a_Stream << "Vec4 {" << a_Vector.x << ", " << a_Vector.y << ", " <<
+				a_Vector.z << ", " << a_Vector.w <<"}";
 		}
 	}
 }
