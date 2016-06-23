@@ -1,36 +1,37 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
 #include <GL/glew.h>
-#include "../utils/fileutils.h"
+
 #include "../math/math.h"
+#include "../utils/fileutils.h"
 
-namespace strike
-{
-	namespace graphics
+namespace strike { namespace graphics {
+
+	class Shader
 	{
-		class Shader
-		{
-		private:
-			GLuint m_ShaderID;
-			const char *m_VertexPath, *m_FragPath;
-		public:
-			Shader(const char* a_VertexPath, const char* a_FragPath);
-			~Shader();
+	private:
+		GLuint m_ShaderID;
+		const char* m_VertPath;
+		const char* m_FragPath;
+	public:
+		Shader(const char* vertPath, const char* fragPath);
+		~Shader();
 
-			void setUniform1f(const GLchar* a_Name, float a_Value);
-			void setUniform1i(const GLchar* a_Name, int a_Value);
-			void setUniformVec2f(const GLchar* a_Name, const math::Vec2& a_Vector);
-			void setUniformVec3f(const GLchar* a_Name, const math::Vec3& a_Vector);
-			void setUniformVec4f(const GLchar* a_Name, const math::Vec4& a_Vector);
-			void setUniformMat4f(const GLchar* a_Name, const math::Mat4& a_Matrix);
 
-			void enable() const;
-			void disable() const;
+		void setUniform1f(const GLchar* name, float value);
+		void setUniform1i(const GLchar* name, int value);
+		void setUniform2f(const GLchar* name, const math::vec2& vector);
+		void setUniform3f(const GLchar* name, const math::vec3& vector);
+		void setUniform4f(const GLchar* name, const math::vec4& vector);
+		void setUniformMat4(const GLchar* name, const math::mat4& matrix);
 
-		private:
-			GLuint load();
-			GLint getUniformLocation(const GLchar* a_Name);
-		};
-	}
-}
+		void enable() const;
+		void disable() const;
+	private:
+		GLuint load();
+		GLint getUniformLocation(const GLchar* name);
+	};
 
+} }

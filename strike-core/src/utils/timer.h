@@ -2,15 +2,13 @@
 
 #include <Windows.h>
 
-namespace strike
-{
-	
+namespace strike {
+
 	class Timer
 	{
 	private:
 		LARGE_INTEGER m_Start;
 		double m_Frequency;
-
 	public:
 		Timer()
 		{
@@ -30,7 +28,9 @@ namespace strike
 			LARGE_INTEGER current;
 			QueryPerformanceCounter(&current);
 			unsigned __int64 cycles = current.QuadPart - m_Start.QuadPart;
-			return (float)(cycles * m_Frequency * 1000);
+			return (float)(cycles * m_Frequency);
 		}
+
 	};
+
 }

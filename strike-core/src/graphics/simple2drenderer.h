@@ -2,22 +2,17 @@
 
 #include <deque>
 #include "renderer2d.h"
-#include "staticsprite.h"
+#include "static_sprite.h"
 
-namespace strike
-{
-	namespace graphics
+namespace strike { namespace graphics {
+
+	class Simple2DRenderer : public Renderer2D
 	{
-		class Simple2DRenderer : public Renderer2D
-		{
-		private:
-			std::deque<const StaticSprite*> m_RenderQueue;
+	private:
+		std::deque<const StaticSprite*> m_RenderQueue;
+	public:
+		void submit(const Renderable2D* renderable) override;
+		void flush() override;
+	};
 
-
-		public:
-			void submit(const Renderable2D* a_Renderable2D) override;
-			void flush() override;
-		};
-	}
-}
-
+} }
