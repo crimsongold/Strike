@@ -1,6 +1,6 @@
 #include "vec4.h"
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	vec4::vec4(const float& x, const float& y, const float& z, const float& w)
 	{

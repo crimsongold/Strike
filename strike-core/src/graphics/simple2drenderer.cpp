@@ -15,7 +15,7 @@ namespace strike { namespace graphics {
 			sprite->getVAO()->bind();
 			sprite->getIBO()->bind();
 
-			sprite->getShader().setUniformMat4("ml_matrix", maths::mat4::translation(sprite->getPosition()));
+			sprite->getShader().setUniformMat4("ml_matrix", math::mat4::translation(sprite->getPosition()));
 			glDrawElements(GL_TRIANGLES, sprite->getIBO()->getCount(), GL_UNSIGNED_SHORT, nullptr);
 
 			sprite->getIBO()->unbind();

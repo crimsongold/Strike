@@ -4,7 +4,7 @@
 #include "vec4.h"
 #include "mathfunc.h"
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	struct mat4
 	{

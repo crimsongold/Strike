@@ -1,6 +1,6 @@
 #include "vec2.h"
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	vec2::vec2()
 	{

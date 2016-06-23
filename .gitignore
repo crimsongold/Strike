@@ -19,3 +19,4 @@ Strike.VC.VC.opendb
 *.db
 bin/
 *.obj
+*.exe

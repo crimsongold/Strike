@@ -1,6 +1,6 @@
 #include "vec3.h"
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	vec3::vec3()
 	{

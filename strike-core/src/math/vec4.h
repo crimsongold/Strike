@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	struct vec4
 	{

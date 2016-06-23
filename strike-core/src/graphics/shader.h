@@ -22,10 +22,10 @@ namespace strike { namespace graphics {
 
 		void setUniform1f(const GLchar* name, float value);
 		void setUniform1i(const GLchar* name, int value);
-		void setUniform2f(const GLchar* name, const maths::vec2& vector);
-		void setUniform3f(const GLchar* name, const maths::vec3& vector);
-		void setUniform4f(const GLchar* name, const maths::vec4& vector);
-		void setUniformMat4(const GLchar* name, const maths::mat4& matrix);
+		void setUniform2f(const GLchar* name, const math::vec2& vector);
+		void setUniform3f(const GLchar* name, const math::vec3& vector);
+		void setUniform4f(const GLchar* name, const math::vec4& vector);
+		void setUniformMat4(const GLchar* name, const math::mat4& matrix);
 
 		void enable() const;
 		void disable() const;

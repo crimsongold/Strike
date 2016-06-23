@@ -1,4 +1,4 @@
-#include "BatchRenderer2D.h"
+#include "batchrenderer2d.h"
 
 namespace strike { namespace graphics {
 
@@ -56,9 +56,9 @@ namespace strike { namespace graphics {
 
 	void BatchRenderer2D::submit(const Renderable2D* renderable)
 	{
-		const maths::vec3& position = renderable->getPosition();
-		const maths::vec2& size = renderable->getSize();
-		const maths::vec4& color = renderable->getColor();
+		const math::vec3& position = renderable->getPosition();
+		const math::vec2& size = renderable->getSize();
+		const math::vec4& color = renderable->getColor();
 		
 		int r = color.x * 255.0f;
 		int g = color.y * 255.0f;
@@ -71,15 +71,15 @@ namespace strike { namespace graphics {
 		m_Buffer->color = c;
 		m_Buffer++;
 
-		m_Buffer->vertex = maths::vec3(position.x, position.y + size.y, position.z);
+		m_Buffer->vertex = math::vec3(position.x, position.y + size.y, position.z);
 		m_Buffer->color = c;
 		m_Buffer++;
 
-		m_Buffer->vertex = maths::vec3(position.x + size.x, position.y + size.y, position.z);
+		m_Buffer->vertex = math::vec3(position.x + size.x, position.y + size.y, position.z);
 		m_Buffer->color = c;
 		m_Buffer++;
 
-		m_Buffer->vertex = maths::vec3(position.x + size.x, position.y, position.z);
+		m_Buffer->vertex = math::vec3(position.x + size.x, position.y, position.z);
 		m_Buffer->color = c;
 		m_Buffer++;
 

@@ -1,6 +1,6 @@
 #include "mat4.h"
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	mat4::mat4()
 	{

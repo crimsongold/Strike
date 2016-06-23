@@ -3,7 +3,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-namespace strike { namespace maths {
+namespace strike { namespace math {
 
 	inline float toRadians(float degrees)
 	{
