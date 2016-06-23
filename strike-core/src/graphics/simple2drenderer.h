@@ -2,6 +2,7 @@
 
 #include <deque>
 #include "renderer2d.h"
+#include "staticsprite.h"
 
 namespace strike {
 	namespace graphics
@@ -10,7 +11,7 @@ namespace strike {
 		class Simple2DRenderer : public Renderer2D
 		{
 		private:
-			std::deque<const Renderable2D*> m_RenderQueue;
+			std::deque<const StaticSprite*> m_RenderQueue;
 
 
 		public:

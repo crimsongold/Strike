@@ -13,6 +13,8 @@ namespace strike { namespace graphics
 		{
 			delete m_Buffers[i];
 		}
+
+		glDeleteVertexArrays(1, &m_ArrayID);
 	}
 
 	void VertexArray::addBuffer(Buffer* a_Buffer, GLuint a_Index)

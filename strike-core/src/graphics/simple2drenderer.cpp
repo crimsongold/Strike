@@ -4,14 +4,14 @@ namespace strike { namespace graphics
 {
 	void Simple2DRenderer::submit(const Renderable2D* a_Renderable)
 	{
-		m_RenderQueue.push_back(a_Renderable);
+		m_RenderQueue.push_back((StaticSprite*) a_Renderable);
 	}
 
 	void Simple2DRenderer::flush()
 	{
 		while(!m_RenderQueue.empty())
 		{
-			const Renderable2D* renderable = m_RenderQueue.front();
+			const StaticSprite* renderable = m_RenderQueue.front();
 			renderable->getVAO()->bind();
 			renderable->getIBO()->bind();
 

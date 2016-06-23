@@ -3,7 +3,7 @@
 namespace strike {
 	namespace graphics
 	{
-		IndexBuffer::IndexBuffer(GLushort* a_Data, GLsizei a_Count)
+		IndexBuffer::IndexBuffer(GLuint* a_Data, GLsizei a_Count)
 			: m_Count(a_Count)
 		{
 			glGenBuffers(1, &m_BufferID);
@@ -11,6 +11,12 @@ namespace strike {
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, a_Count * sizeof(GLfloat), a_Data, GL_STATIC_DRAW);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
+
+		IndexBuffer::~IndexBuffer()
+		{
+			glDeleteBuffers(1, &m_BufferID);
+		}
+
 
 		void IndexBuffer::bind() const
 		{

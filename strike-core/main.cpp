@@ -5,8 +5,13 @@
 #include "src/graphics/buffers/buffer.h"
 #include "src/graphics/buffers/indexbuffer.h"
 #include "src/graphics/buffers/vertexarray.h"
+#include "src/graphics/batchrenderer2d.h"
+#include "src/graphics/staticsprite.h"
 #include "src/graphics/simple2drenderer.h"
-#include "src/graphics/renderable2d.h"
+#include <time.h>
+#include "src/graphics/sprite.h"
+
+#define BATCH_RENDERER 0
 
 int main()
 {
@@ -22,12 +27,40 @@ int main()
 	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
 	shader.enable();
 	shader.setUniformMat4f("pr_matrix", ortho);
-	shader.setUniformMat4f("ml_matrix", Mat4::translation(Vec3(4, 3, 0)));
 
-	Renderable2D spriteA(math::Vec2(4 ,4), math::Vec3(5, 5, 0), math::Vec4(1, 0, 1, 1), shader);
-	Renderable2D spriteB(math::Vec2(16, 9), math::Vec3(0, 0, 0), math::Vec4(0, 0, 1, 1), shader);
+	std::vector<Renderable2D*> sprites;
+
+	srand(time(NULL));
+
+	for (float y = 0; y < 9.0f; y += 0.05)
+	{
+		for (float x = 0; x < 16.0f; x += 0.05)
+		{
+			sprites.push_back(new
+#if BATCH_RENDERER
+				Sprite
+#else
+				StaticSprite
+#endif
+				(x, y, 0.04f, 0.04f, math::Vec4(rand() % 1000 / 1000.0f, 0, 1, 1)
+#if !BATCH_RENDERER
+					, shader
+#endif
+
+					));
+		}
+	}
+
+
+#if BATCH_RENDERER
+	Sprite sprite(5, 5, 4, 4, math::Vec4(1, 0, 1, 1));
+	Sprite sprite2(7, 1, 2, 3, math::Vec4(0.2f, 0, 1, 1));
+	BatchRenderer2D renderer;
+#else
+	StaticSprite sprite(5, 5, 4, 4, math::Vec4(1, 0, 1, 1), shader);
+	StaticSprite sprite2(7, 1, 2, 3, math::Vec4(0.2f, 0, 1, 1), shader);
 	Simple2DRenderer renderer;
-
+#endif
 
 	shader.setUniformVec2f("light_pos", Vec2(4.0f, 1.5f));
 	shader.setUniformVec4f("colour", Vec4(0.2f, 0.3f, 0.8f, 1.0f));
@@ -38,10 +71,18 @@ int main()
 		double x, y;
 		window.getMousePosition(x, y);
 		shader.setUniformVec2f("light_pos", Vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
-		renderer.submit(&spriteA);
-		renderer.submit(&spriteB);
+#if BATCH_RENDERER
+		renderer.begin();
+#endif
+		for (int i = 0; i < sprites.size(); i++)
+		{
+			renderer.submit(sprites[i]);
+		}
+#if BATCH_RENDERER
+		renderer.end();
+#endif
 		renderer.flush();
-
+		printf("Sprites: %d\n", sprites.size());
 		window.update();
 	}
 
