@@ -1,108 +1,110 @@
 #include "vec4.h"
 
-namespace strike
-{
-	namespace math
+namespace strike { namespace maths {
+
+	vec4::vec4(const float& x, const float& y, const float& z, const float& w)
 	{
-		Vec4::Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W)
-		{
-			x = a_X;
-			y = a_Y;
-			z = a_Z;
-			w = a_W;
-		}
-
-		Vec4& Vec4::add(const Vec4& a_Other)
-		{
-			x += a_Other.x;
-			y += a_Other.y;
-			z += a_Other.z;
-			w += a_Other.w;
-			return *this;
-		}
-
-		Vec4& Vec4::subtract(const Vec4& a_Other)
-		{
-			x -= a_Other.x;
-			y -= a_Other.y;
-			z -= a_Other.z;
-			w -= a_Other.w;
-			return *this;
-		}
-
-		Vec4& Vec4::multiply(const Vec4& a_Other)
-		{
-			x *= a_Other.x;
-			y *= a_Other.y;
-			z *= a_Other.z;
-			w *= a_Other.w;
-			return *this;
-		}
-
-		Vec4& Vec4::divide(const Vec4& a_Other)
-		{
-			x /= a_Other.x;
-			y /= a_Other.y;
-			z /= a_Other.z;
-			w /= a_Other.w;
-			return *this;
-		}
-
-		Vec4 operator+(Vec4 a_Left, const Vec4& a_Right)
-		{
-			return a_Left.add(a_Right);
-		}
-
-		Vec4 operator-(Vec4 a_Left, const Vec4& a_Right)
-		{
-			return a_Left.subtract(a_Right);
-		}
-
-		Vec4 operator*(Vec4 a_Left, const Vec4& a_Right)
-		{
-			return a_Left.multiply(a_Right);
-		}
-
-		Vec4 operator/(Vec4 a_Left, const Vec4& a_Right)
-		{
-			return a_Left.divide(a_Right);
-		}
-
-		bool Vec4::operator==(const Vec4& a_Other)
-		{
-			return x == a_Other.x && y == a_Other.y && z == a_Other.z && w == a_Other.w;
-		}
-
-		bool Vec4::operator!=(const Vec4& a_Other)
-		{
-			return !(*this == a_Other);
-		}
-
-		Vec4& Vec4::operator+=(const Vec4& a_Other)
-		{
-			return add(a_Other);
-		}
-
-		Vec4& Vec4::operator-=(const Vec4& a_Other)
-		{
-			return subtract(a_Other);
-		}
-
-		Vec4& Vec4::operator*=(const Vec4& a_Other)
-		{
-			return multiply(a_Other);
-		}
-
-		Vec4& Vec4::operator/=(const Vec4& a_Other)
-		{
-			return divide(a_Other);
-		}
-
-		std::ostream& operator<<(std::ostream& a_Stream, const Vec4& a_Vector)
-		{
-			return a_Stream << "Vec4 {" << a_Vector.x << ", " << a_Vector.y << ", " <<
-				a_Vector.z << ", " << a_Vector.w << "}";
-		}
+		this->x = x;
+		this->y = y;
+		this->z = z;
+		this->w = w;
 	}
-}
 
+	vec4& vec4::add(const vec4& other)
+	{
+		x += other.x;
+		y += other.y;
+		z += other.z;
+		w += other.w;
+
+		return *this;
+	}
+
+	vec4& vec4::subtract(const vec4& other)
+	{
+		x -= other.x;
+		y -= other.y;
+		z -= other.z;
+		w -= other.w;
+
+		return *this;
+	}
+
+	vec4& vec4::multiply(const vec4& other)
+	{
+		x *= other.x;
+		y *= other.y;
+		z *= other.z;
+		w *= other.w;
+
+		return *this;
+	}
+
+	vec4& vec4::divide(const vec4& other)
+	{
+		x /= other.x;
+		y /= other.y;
+		z /= other.z;
+		w /= other.w;
+
+		return *this;
+	}
+
+	vec4 operator+(vec4 left, const vec4& right)
+	{
+		return left.add(right);
+	}
+
+	vec4 operator-(vec4 left, const vec4& right)
+	{
+		return left.subtract(right);
+	}
+
+	vec4 operator*(vec4 left, const vec4& right)
+	{
+		return left.multiply(right);
+	}
+
+	vec4 operator/(vec4 left, const vec4& right)
+	{
+		return left.divide(right);
+	}
+
+	vec4& vec4::operator+=(const vec4& other)
+	{
+		return add(other);
+	}
+
+	vec4& vec4::operator-=(const vec4& other)
+	{
+		return subtract(other);
+	}
+
+	vec4& vec4::operator*=(const vec4& other)
+	{
+		return multiply(other);
+	}
+
+	vec4& vec4::operator/=(const vec4& other)
+	{
+		return divide(other);
+	}
+
+	bool vec4::operator==(const vec4& other)
+	{
+		return x == other.x && y == other.y && z == other.z && w == other.w;
+	}
+
+	bool vec4::operator!=(const vec4& other)
+	{
+		return !(*this == other);
+	}
+
+	std::ostream& operator<<(std::ostream& stream, const vec4& vector)
+	{
+		stream << "vec4: (" << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << ")";
+		return stream;
+	}
+
+
+} }

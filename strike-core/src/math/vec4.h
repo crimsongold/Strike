@@ -2,37 +2,34 @@
 
 #include <iostream>
 
-namespace strike
-{
-	namespace math
+namespace strike { namespace maths {
+
+	struct vec4
 	{
-		struct Vec4
-		{
-			float x, y, z, w;
+		float x, y, z, w;
 
-			Vec4() = default;
-			Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W);
+		vec4() = default;
+		vec4(const float& x, const float& y, const float& z, const float& w);
 
-			Vec4& add(const Vec4& a_Other);
-			Vec4& subtract(const Vec4& a_Other);
-			Vec4& multiply(const Vec4& a_Other);
-			Vec4& divide(const Vec4& a_Other);
+		vec4& add(const vec4& other);
+		vec4& subtract(const vec4& other);
+		vec4& multiply(const vec4& other);
+		vec4& divide(const vec4& other);
 
-			friend Vec4 operator+(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4 operator-(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4 operator*(Vec4 a_Left, const Vec4& a_Right);
-			friend Vec4 operator/(Vec4 a_Left, const Vec4& a_Right);
+		friend vec4 operator+(vec4 left, const vec4& right);
+		friend vec4 operator-(vec4 left, const vec4& right);
+		friend vec4 operator*(vec4 left, const vec4& right);
+		friend vec4 operator/(vec4 left, const vec4& right);
 
-			bool operator==(const Vec4& a_Other);
-			bool operator!=(const Vec4& a_Other);
+		bool operator==(const vec4& other);
+		bool operator!=(const vec4& other);
 
-			Vec4& operator+=(const Vec4& a_Other);
-			Vec4& operator-=(const Vec4& a_Other);
-			Vec4& operator*=(const Vec4& a_Other);
-			Vec4& operator/=(const Vec4& a_Other);
+		vec4& operator+=(const vec4& other);
+		vec4& operator-=(const vec4& other);
+		vec4& operator*=(const vec4& other);
+		vec4& operator/=(const vec4& other);
 
-			friend std::ostream& operator<<(std::ostream& a_Stream, const Vec4& a_Vector);
-		};
-	}
-}
+		friend std::ostream& operator<<(std::ostream& stream, const vec4& vector);
+	};
 
+} }

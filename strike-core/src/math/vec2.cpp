@@ -1,103 +1,106 @@
 #include "vec2.h"
 
-namespace strike
-{
-	namespace math
+namespace strike { namespace maths {
+
+	vec2::vec2()
 	{
-		Vec2::Vec2()
-		{
-			x = 0.0f;
-			y = 0.0f;
-		}
-
-		Vec2::Vec2(const float& a_X, const float& a_Y)
-		{
-			x = a_X;
-			y = a_Y;
-		}
-
-		Vec2& Vec2::add(const Vec2& a_Other)
-		{
-			x += a_Other.x;
-			y += a_Other.y;
-			return *this;
-		}
-
-		Vec2& Vec2::subtract(const Vec2& a_Other)
-		{
-			x -= a_Other.x;
-			y -= a_Other.y;
-			return *this;
-		}
-
-		Vec2& Vec2::multiply(const Vec2& a_Other)
-		{
-			x *= a_Other.x;
-			y *= a_Other.y;
-			return *this;
-		}
-
-		Vec2& Vec2::divide(const Vec2& a_Other)
-		{
-			x /= a_Other.x;
-			y /= a_Other.y;
-			return *this;
-		}
-
-		Vec2 operator+(Vec2 a_Left, const Vec2& a_Right)
-		{
-			return a_Left.add(a_Right);
-		}
-
-		Vec2 operator-(Vec2 a_Left, const Vec2& a_Right)
-		{
-			return a_Left.subtract(a_Right);
-		}
-
-		Vec2 operator*(Vec2 a_Left, const Vec2& a_Right)
-		{
-			return a_Left.multiply(a_Right);
-		}
-
-		Vec2 operator/(Vec2 a_Left, const Vec2& a_Right)
-		{
-			return a_Left.divide(a_Right);
-		}
-
-		bool Vec2::operator==(const Vec2& a_Other)
-		{
-			return x == a_Other.x && y == a_Other.y;
-		}
-
-		bool Vec2::operator!=(const Vec2& a_Other)
-		{
-			return !(*this == a_Other);
-		}
-
-		Vec2& Vec2::operator+=(const Vec2& a_Other)
-		{
-			return add(a_Other);
-		}
-
-		Vec2& Vec2::operator-=(const Vec2& a_Other)
-		{
-			return subtract(a_Other);
-		}
-
-		Vec2& Vec2::operator*=(const Vec2& a_Other)
-		{
-			return multiply(a_Other);
-		}
-
-		Vec2& Vec2::operator/=(const Vec2& a_Other)
-		{
-			return divide(a_Other);
-		}
-
-		std::ostream& operator<<(std::ostream& a_Stream, const Vec2& a_Vector)
-		{
-			return a_Stream << "Vec2 {" << a_Vector.x << ", " << a_Vector.y << "}";
-		}
+		x = 0.0f;
+		y = 0.0f;
 	}
-}
 
+	vec2::vec2(const float& x, const float& y)
+	{
+		this->x = x;
+		this->y = y;
+	}
+
+	vec2& vec2::add(const vec2& other)
+	{
+		x += other.x;
+		y += other.y;
+
+		return *this;
+	}
+
+	vec2& vec2::subtract(const vec2& other)
+	{
+		x -= other.x;
+		y -= other.y;
+
+		return *this;
+	}
+
+	vec2& vec2::multiply(const vec2& other)
+	{
+		x *= other.x;
+		y *= other.y;
+
+		return *this;
+	}
+
+	vec2& vec2::divide(const vec2& other)
+	{
+		x /= other.x;
+		y /= other.y;
+
+		return *this;
+	}
+
+	vec2 operator+(vec2 left, const vec2& right)
+	{
+		return left.add(right);
+	}
+
+	vec2 operator-(vec2 left, const vec2& right)
+	{
+		return left.subtract(right);
+	}
+
+	vec2 operator*(vec2 left, const vec2& right)
+	{
+		return left.multiply(right);
+	}
+
+	vec2 operator/(vec2 left, const vec2& right)
+	{
+		return left.divide(right);
+	}
+
+	vec2& vec2::operator+=(const vec2& other)
+	{
+		return add(other);
+	}
+
+	vec2& vec2::operator-=(const vec2& other)
+	{
+		return subtract(other);
+	}
+
+	vec2& vec2::operator*=(const vec2& other)
+	{
+		return multiply(other);
+	}
+
+	vec2& vec2::operator/=(const vec2& other)
+	{
+		return divide(other);
+	}
+
+	bool vec2::operator==(const vec2& other)
+	{
+		return x == other.x && y == other.y;
+	}
+
+	bool vec2::operator!=(const vec2& other)
+	{
+		return !(*this == other);
+	}
+
+	std::ostream& operator<<(std::ostream& stream, const vec2& vector)
+	{
+		stream << "vec2: (" << vector.x << ", " << vector.y << ")";
+		return stream;
+	}
+
+
+} }

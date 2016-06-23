@@ -1,149 +1,143 @@
 #include "mat4.h"
 
-#define _USE_MATH_DEFINES
+namespace strike { namespace maths {
 
-namespace strike
-{
-	namespace math
+	mat4::mat4()
 	{
-		Mat4::Mat4()
-		{
-			for (int i = 0; i < 4 * 4; i++)
-			{
-				m_Elements[i] = 0.0f;
-			}
-		}
-
-		Mat4::Mat4(float a_Diagonal)
-		{
-			for (int i = 0; i < 4 * 4; i++)
-			{
-				m_Elements[i] = 0.0f;
-			}
-
-			m_Elements[0 + 0 * 4] = a_Diagonal;
-			m_Elements[1 + 1 * 4] = a_Diagonal;
-			m_Elements[2 + 2 * 4] = a_Diagonal;
-			m_Elements[3 + 3 * 4] = a_Diagonal;
-		}
-
-		Mat4 Mat4::identity()
-		{
-			return Mat4(1.0f);
-		}
-
-		//Column Major --> row + column * 4
-		Mat4& Mat4::multiply(const Mat4& a_Other)
-		{
-			Mat4 result;
-
-			for (int y = 0; y < 4; y++)
-			{
-				for (int x = 0; x < 4; x++)
-				{
-					float sum = 0.0f;
-					for (int element = 0; element < 4; element++)
-					{
-						sum += m_Elements[x + element * 4];
-					}
-					m_Elements[x + y * 4] = sum;
-				}
-			}
-
-			return *this;
-		}
-
-		Mat4 operator*(Mat4 a_Left, const Mat4& a_Right)
-		{
-			return a_Left.multiply(a_Right);
-		}
-
-		Mat4& Mat4::operator*=(const Mat4& a_Other)
-		{
-			return multiply(a_Other);
-		}
-
-		Mat4 Mat4::orthographic(float a_Left, float a_Right, float a_Bottom, float a_Top,
-		                        float a_Near, float a_Far)
-		{
-			Mat4 result(1.0f);
-
-			result.m_Elements[0 + 0 * 4] = 2.0f / (a_Right - a_Left);
-			result.m_Elements[1 + 1 * 4] = 2.0f / (a_Top - a_Bottom);
-			result.m_Elements[2 + 2 * 4] = 2.0f / (a_Near - a_Far);
-
-			result.m_Elements[0 + 3 * 4] = (a_Left + a_Right) / (a_Left - a_Right);
-			result.m_Elements[1 + 3 * 4] = (a_Bottom + a_Top) / (a_Bottom - a_Top);
-			result.m_Elements[2 + 3 * 4] = (a_Far + a_Near) / (a_Far - a_Near);
-
-			return result;
-		}
-
-		Mat4 Mat4::perspective(float a_Fov, float a_AspectRatio, float a_Near, float a_Far)
-		{
-			Mat4 result(1.0f);
-
-			float val = 1.0f / (float)tan(toRadians(0.5f * a_Fov));
-
-			float b = (a_Near + a_Far) / (a_Near - a_Far);
-			float c = (2.0f * a_Near * a_Far) / (a_Near - a_Far);
-
-			result.m_Elements[0 + 0 * 4] = val / a_AspectRatio;
-			result.m_Elements[1 + 1 * 4] = val;
-			result.m_Elements[2 + 2 * 4] = (a_Near + a_Far) / (a_Near - a_Far);
-			result.m_Elements[2 + 3 * 4] = (2.0f * a_Near * a_Far) / (a_Near - a_Far);
-			result.m_Elements[3 + 2 * 4] = -1.0f;
-
-			return result;
-		}
-
-		Mat4 Mat4::translation(const Vec3& a_Translation)
-		{
-			Mat4 result(1.0f);
-
-			result.m_Elements[0 + 3 * 4] = a_Translation.x;
-			result.m_Elements[1 + 3 * 4] = a_Translation.y;
-			result.m_Elements[2 + 3 * 4] = a_Translation.z;
-
-			return result;
-		}
-
-		Mat4 Mat4::rotation(float a_Angle, const Vec3& a_Axis)
-		{
-			Mat4 result(1.0f);
-
-			float angleInRadians = toRadians(a_Angle);
-			float cosine = cos(angleInRadians);
-			float sine = sin(angleInRadians);
-			float x = a_Axis.x;
-			float y = a_Axis.y;
-			float z = a_Axis.z;
-
-			result.m_Elements[0 + 0 * 4] = x * (1 - cosine) + cosine;
-			result.m_Elements[1 + 0 * 4] = x * y * (1 - cosine) + z * sine;
-			result.m_Elements[2 + 0 * 4] = x * z * (1 - cosine) - y * sine;
-
-			result.m_Elements[0 + 1 * 4] = x * y * (1 - cosine) - z * sine;
-			result.m_Elements[1 + 1 * 4] = y * (1 - cosine) + cosine;
-			result.m_Elements[2 + 1 * 4] = y * z * (1 - cosine) + x * sine;
-
-			result.m_Elements[0 + 2 * 4] = x * z * (1 - cosine) + y * sine;
-			result.m_Elements[1 + 2 * 4] = y * z * (1 - cosine) - x * sine;
-			result.m_Elements[2 + 2 * 4] = z * (1 - cosine) + cosine;
-
-			return result;
-		}
-
-		Mat4 Mat4::scale(const Vec3& a_Scale)
-		{
-			Mat4 result(1.0f);
-
-			result.m_Elements[0 + 0 * 4] = a_Scale.x;
-			result.m_Elements[1 + 1 * 4] = a_Scale.y;
-			result.m_Elements[2 + 2 * 4] = a_Scale.z;
-
-			return result;
-		}
+		for (int i = 0; i < 4 * 4; i++)
+			elements[i] = 0.0f;
 	}
-}
 
+	mat4::mat4(float diagonal)
+	{
+		for (int i = 0; i < 4 * 4; i++)
+			elements[i] = 0.0f;
+
+		elements[0 + 0 * 4] = diagonal;
+		elements[1 + 1 * 4] = diagonal;
+		elements[2 + 2 * 4] = diagonal;
+		elements[3 + 3 * 4] = diagonal;
+	}
+
+	mat4 mat4::identity()
+	{
+		return mat4(1.0f);
+	}
+
+	mat4& mat4::multiply(const mat4& other)
+	{
+		float data[16];
+		for (int y = 0; y < 4; y++)
+		{
+			for (int x = 0; x < 4; x++)
+			{
+				float sum = 0.0f;
+				for (int e = 0; e < 4; e++)
+				{
+					sum += elements[x + e * 4] * other.elements[e + y * 4];
+				}
+				data[x + y * 4] = sum;
+			}
+		}
+		memcpy(elements, data, 4 * 4 * sizeof(float));
+
+		return *this;
+	}
+
+	mat4 operator*(mat4 left, const mat4& right)
+	{
+		return left.multiply(right);
+	}
+
+	mat4& mat4::operator*=(const mat4& other)
+	{
+		return multiply(other);
+	}
+
+	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
+	{
+		mat4 result(1.0f);
+
+		result.elements[0 + 0 * 4] = 2.0f / (right - left);
+
+		result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
+
+		result.elements[2 + 2 * 4] = 2.0f / (near - far);
+
+		result.elements[0 + 3 * 4] = (left + right) / (left - right);
+		result.elements[1 + 3 * 4] = (bottom + top) / (bottom - top);
+		result.elements[2 + 3 * 4] = (far + near) / (far - near);
+
+		return result;
+	}
+
+	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
+	{
+		mat4 result(1.0f);
+
+		float q = 1.0f / tan(toRadians(0.5f * fov));
+		float a = q / aspectRatio;
+
+		float b = (near + far) / (near - far);
+		float c = (2.0f * near * far) / (near - far);
+
+		result.elements[0 + 0 * 4] = a;
+		result.elements[1 + 1 * 4] = q;
+		result.elements[2 + 2 * 4] = b;
+		result.elements[3 + 2 * 4] = -1.0f;
+		result.elements[2 + 3 * 4] = c;
+
+		return result;
+	}
+
+	mat4 mat4::translation(const vec3& translation)
+	{
+		mat4 result(1.0f);
+
+		result.elements[0 + 3 * 4] = translation.x;
+		result.elements[1 + 3 * 4] = translation.y;
+		result.elements[2 + 3 * 4] = translation.z;
+
+		return result;
+	}
+
+	mat4 mat4::rotation(float angle, const vec3& axis)
+	{
+		mat4 result(1.0f);
+
+		float r = toRadians(angle);
+		float c = cos(r);
+		float s = sin(r);
+		float omc = 1.0f - c;
+		
+		float x = axis.x;
+		float y = axis.y;
+		float z = axis.z;
+
+		result.elements[0 + 0 * 4] = x * omc + c;
+		result.elements[1 + 0 * 4] = y * x * omc + z * s;
+		result.elements[2 + 0 * 4] = x * z * omc - y * s;
+
+		result.elements[0 + 1 * 4] = x * y * omc - z * s;
+		result.elements[1 + 1 * 4] = y * omc + c;
+		result.elements[2 + 1 * 4] = y * z * omc + x * s;
+
+		result.elements[0 + 2 * 4] = x * z * omc + y * s;
+		result.elements[1 + 2 * 4] = y * z * omc - x * s;
+		result.elements[2 + 2 * 4] = z * omc + c;
+		
+		return result;
+	}
+
+	mat4 mat4::scale(const vec3& scale)
+	{
+		mat4 result(1.0f);
+
+		result.elements[0 + 0 * 4] = scale.x;
+		result.elements[1 + 1 * 4] = scale.y;
+		result.elements[2 + 2 * 4] = scale.z;
+
+		return result;
+	}
+
+} }
