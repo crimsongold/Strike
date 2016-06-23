@@ -92,17 +92,17 @@ namespace strike { namespace graphics
 
 	void Shader::setUniformVec2f(const GLchar* a_Name, const math::Vec2& a_Vector)
 	{
-		glUniform2f(getUniformLocation(a_Name), a_Vector.m_X, a_Vector.m_Y);
+		glUniform2f(getUniformLocation(a_Name), a_Vector.x, a_Vector.y);
 	}
 
 	void Shader::setUniformVec3f(const GLchar* a_Name, const math::Vec3& a_Vector)
 	{
-		glUniform3f(getUniformLocation(a_Name), a_Vector.m_X, a_Vector.m_Y, a_Vector.m_Z);
+		glUniform3f(getUniformLocation(a_Name), a_Vector.x, a_Vector.y, a_Vector.z);
 	}
 
 	void Shader::setUniformVec4f(const GLchar* a_Name, const math::Vec4& a_Vector)
 	{
-		glUniform4f(getUniformLocation(a_Name), a_Vector.m_X, a_Vector.m_Y, a_Vector.m_Z, a_Vector.m_W);
+		glUniform4f(getUniformLocation(a_Name), a_Vector.x, a_Vector.y, a_Vector.z, a_Vector.w);
 	}
 
 	void Shader::setUniformMat4f(const GLchar* a_Name, const math::Mat4& a_Matrix)

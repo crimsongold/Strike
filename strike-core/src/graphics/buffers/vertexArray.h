@@ -18,7 +18,7 @@ namespace strike {  namespace graphics
 		VertexArray();
 		~VertexArray();
 
-		void addBuffers(Buffer* a_Buffer, GLuint a_Index);
+		void addBuffer(Buffer* a_Buffer, GLuint a_Index);
 
 		void bind() const;
 		void unbind() const;

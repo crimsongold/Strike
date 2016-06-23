@@ -4,41 +4,41 @@ namespace strike { namespace math
 {
 	Vec2::Vec2()
 	{
-		m_X = 0.0f;
-		m_Y = 0.0f;
+		x = 0.0f;
+		y = 0.0f;
 	}
 
 	Vec2::Vec2(const float& a_X, const float& a_Y)
 	{
-		m_X = a_X;
-		m_Y = a_Y;
+		x = a_X;
+		y = a_Y;
 	}
 
 	Vec2& Vec2::add(const Vec2& a_Other)
 	{
-		m_X += a_Other.m_X;
-		m_Y += a_Other.m_Y;
+		x += a_Other.x;
+		y += a_Other.y;
 		return *this;
 	}
 
 	Vec2& Vec2::subtract(const Vec2& a_Other)
 	{
-		m_X -= a_Other.m_X;
-		m_Y -= a_Other.m_Y;
+		x -= a_Other.x;
+		y -= a_Other.y;
 		return *this;
 	}
 	
 	Vec2& Vec2::multiply(const Vec2& a_Other)
 	{
-		m_X *= a_Other.m_X;
-		m_Y *= a_Other.m_Y;
+		x *= a_Other.x;
+		y *= a_Other.y;
 		return *this;
 	}
 	
 	Vec2& Vec2::divide(const Vec2& a_Other)
 	{
-		m_X /= a_Other.m_X;
-		m_Y /= a_Other.m_Y;
+		x /= a_Other.x;
+		y /= a_Other.y;
 		return *this;
 	}
 
@@ -64,7 +64,7 @@ namespace strike { namespace math
 
 	bool Vec2::operator==(const Vec2& a_Other) 
 	{
-		return m_X == a_Other.m_X && m_Y == a_Other.m_Y;
+		return x == a_Other.x && y == a_Other.y;
 	}
 
 	bool Vec2::operator!=(const Vec2& a_Other)
@@ -94,6 +94,6 @@ namespace strike { namespace math
 
 	std::ostream& operator<<(std::ostream& a_Stream, const Vec2& a_Vector)
 	{
-		return a_Stream << "Vec2 {" << a_Vector.m_X << ", " << a_Vector.m_Y << "}";
+		return a_Stream << "Vec2 {" << a_Vector.x << ", " << a_Vector.y << "}";
 	}
 } }

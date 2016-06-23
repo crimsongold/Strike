@@ -7,7 +7,7 @@ namespace strike {
 	{
 		struct Vec4
 		{
-			float m_X, m_Y, m_Z, m_W;
+			float x, y, z, w;
 
 			Vec4() = default;
 			Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W);

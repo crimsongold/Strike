@@ -6,7 +6,7 @@ namespace strike { namespace math
 {
 	struct Vec2
 	{
-		float m_X, m_Y;
+		float x, y;
 		
 		Vec2();
 

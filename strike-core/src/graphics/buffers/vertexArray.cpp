@@ -15,7 +15,7 @@ namespace strike { namespace graphics
 		}
 	}
 
-	void VertexArray::addBuffers(Buffer* a_Buffer, GLuint a_Index)
+	void VertexArray::addBuffer(Buffer* a_Buffer, GLuint a_Index)
 	{
 		bind();
 		a_Buffer->bind();
