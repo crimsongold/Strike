@@ -2,14 +2,15 @@
 #include "src/graphics/shader.h"
 #include "src/math/math.h"
 
-#include "src/graphics/buffers/buffer.h"
-#include "src/graphics/buffers/indexbuffer.h"
 #include "src/graphics/buffers/vertexarray.h"
 #include "src/graphics/batchrenderer2d.h"
 #include "src/graphics/staticsprite.h"
 #include "src/graphics/simple2drenderer.h"
-#include <time.h>
 #include "src/graphics/sprite.h"
+
+#include "src/utils/timer.h"
+
+#include <time.h>
 
 #define BATCH_RENDERER 0
 
@@ -31,6 +32,7 @@ int main()
 	std::vector<Renderable2D*> sprites;
 
 	srand(time(NULL));
+
 
 	for (float y = 0; y < 9.0f; y += 0.05)
 	{
@@ -65,8 +67,10 @@ int main()
 	shader.setUniformVec2f("light_pos", Vec2(4.0f, 1.5f));
 	shader.setUniformVec4f("colour", Vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
+	Timer timer;
 	while (!window.closed())
 	{
+		timer.reset();
 		window.clear();
 		double x, y;
 		window.getMousePosition(x, y);
@@ -82,8 +86,9 @@ int main()
 		renderer.end();
 #endif
 		renderer.flush();
-		printf("Sprites: %d\n", sprites.size());
 		window.update();
+
+		printf("%f ms\n", timer.elapsed());
 	}
 
 	return 0;

@@ -2,21 +2,27 @@
 
 #include <GL/glew.h>
 
-namespace strike { namespace graphics
+namespace strike
 {
-
-	class Buffer
+	namespace graphics
 	{
-	private:
-		GLuint m_BufferID;
-		GLuint m_ComponentCount;
-	public:
-		Buffer(GLfloat* a_Data, GLsizei a_Count, GLuint a_ComponentCount);
-		~Buffer();
+		class Buffer
+		{
+		private:
+			GLuint m_BufferID;
+			GLuint m_ComponentCount;
+		public:
+			Buffer(GLfloat* a_Data, GLsizei a_Count, GLuint a_ComponentCount);
+			~Buffer();
 
-		void bind() const;
-		void unbind() const;
+			void bind() const;
+			void unbind() const;
 
-		inline GLuint getComponentCount() const { return m_ComponentCount; }
-	};
-} }
+			inline GLuint getComponentCount() const
+			{
+				return m_ComponentCount;
+			}
+		};
+	}
+}
+

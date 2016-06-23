@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-namespace strike {
+namespace strike
+{
 	namespace math
 	{
 		struct Vec3
@@ -35,3 +36,4 @@ namespace strike {
 		};
 	}
 }
+

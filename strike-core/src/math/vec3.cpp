@@ -1,6 +1,7 @@
 #include "vec3.h"
 
-namespace strike {
+namespace strike
+{
 	namespace math
 	{
 		Vec3::Vec3()
@@ -101,8 +102,9 @@ namespace strike {
 
 		std::ostream& operator<<(std::ostream& a_Stream, const Vec3& a_Vector)
 		{
-			return a_Stream << "Vec3 {" << a_Vector.x << ", " << a_Vector.y << ", " << 
+			return a_Stream << "Vec3 {" << a_Vector.x << ", " << a_Vector.y << ", " <<
 				a_Vector.z << "}";
 		}
 	}
 }
+

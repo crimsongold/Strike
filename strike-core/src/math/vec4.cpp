@@ -1,9 +1,9 @@
 #include "vec4.h"
 
-namespace strike {
+namespace strike
+{
 	namespace math
 	{
-
 		Vec4::Vec4(const float& a_X, const float& a_Y, const float& a_Z, const float& a_W)
 		{
 			x = a_X;
@@ -101,7 +101,8 @@ namespace strike {
 		std::ostream& operator<<(std::ostream& a_Stream, const Vec4& a_Vector)
 		{
 			return a_Stream << "Vec4 {" << a_Vector.x << ", " << a_Vector.y << ", " <<
-				a_Vector.z << ", " << a_Vector.w <<"}";
+				a_Vector.z << ", " << a_Vector.w << "}";
 		}
 	}
 }
+

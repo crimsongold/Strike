@@ -1,8 +1,6 @@
 #include "indexBuffer.h"
 
-namespace strike {
-	namespace graphics
-	{
+namespace strike { namespace graphics {
 		IndexBuffer::IndexBuffer(GLuint* a_Data, GLsizei a_Count)
 			: m_Count(a_Count)
 		{
@@ -27,5 +25,4 @@ namespace strike {
 		{
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
-	}
-}
+} }

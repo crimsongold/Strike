@@ -22,8 +22,7 @@ namespace strike
 			std::string result(data);
 			delete(data);
 			return result;
-		
 		}
-		
 	};
 }
+
