@@ -1,28 +1,31 @@
 #include "simple2drenderer.h"
 
-namespace strike { namespace graphics
+namespace strike
 {
-	void Simple2DRenderer::submit(const Renderable2D* a_Renderable)
+	namespace graphics
 	{
-		m_RenderQueue.push_back((StaticSprite*) a_Renderable);
-	}
-
-	void Simple2DRenderer::flush()
-	{
-		while(!m_RenderQueue.empty())
+		void Simple2DRenderer::submit(const Renderable2D* a_Renderable)
 		{
-			const StaticSprite* renderable = m_RenderQueue.front();
-			renderable->getVAO()->bind();
-			renderable->getIBO()->bind();
+			m_RenderQueue.push_back((StaticSprite*) a_Renderable);
+		}
 
-			renderable->getShader().setUniformMat4f("ml_matrix", math::Mat4::translation(renderable->getPosition()));
-			glDrawElements(GL_TRIANGLES, renderable->getIBO()->getCount(), GL_UNSIGNED_SHORT, nullptr);
+		void Simple2DRenderer::flush()
+		{
+			while (!m_RenderQueue.empty())
+			{
+				const StaticSprite* renderable = m_RenderQueue.front();
+				renderable->getVAO()->bind();
+				renderable->getIBO()->bind();
 
-			renderable->getIBO()->unbind();
-			renderable->getVAO()->unbind();
+				renderable->getShader().setUniformMat4f("ml_matrix", math::Mat4::translation(renderable->getPosition()));
+				glDrawElements(GL_TRIANGLES, renderable->getIBO()->getCount(), GL_UNSIGNED_SHORT, nullptr);
 
-			m_RenderQueue.pop_front();
+				renderable->getIBO()->unbind();
+				renderable->getVAO()->unbind();
+
+				m_RenderQueue.pop_front();
+			}
 		}
 	}
+}
 
-} }

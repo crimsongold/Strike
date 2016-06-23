@@ -3,8 +3,10 @@
 #include "renderer2d.h"
 #include "buffers/vertexArray.h"
 
-namespace strike { namespace graphics {
-
+namespace strike
+{
+	namespace graphics
+	{
 #define RENDERER_MAX_SPRITES	60000
 #define RENDERER_VERTEX_SIZE	sizeof(VertexData)
 #define RENDERER_SPRITE_SIZE	RENDERER_VERTEX_SIZE * 4
@@ -34,6 +36,7 @@ namespace strike { namespace graphics {
 
 		private:
 			void init();
-
 		};
-} }
+	}
+}
+

@@ -1,8 +1,10 @@
 #include "batchrenderer2d.h"
 
 
-namespace strike { namespace graphics {
-
+namespace strike
+{
+	namespace graphics
+	{
 		BatchRenderer2D::BatchRenderer2D()
 		{
 			init();
@@ -98,6 +100,6 @@ namespace strike { namespace graphics {
 
 			m_IndexCount = 0;
 		}
-
 	}
 }
+
