@@ -39,7 +39,6 @@ namespace strike { namespace graphics
 		m_Renderer->end();
 
 		m_Renderer->flush();
-		m_Shader->disable();
 	}
 
 } }
